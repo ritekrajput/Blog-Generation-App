@@ -9,7 +9,7 @@ import os
 def getLLamaresponse(input_text, no_words, blog_style):
     ### LLama3.2 model
     model_id = "meta-llama/Llama-3.2-3B"
-    token=os.getenv("DB_TOKEN")
+    token = st.secrets["DB_TOKEN"]
 
     # Load the model and tokenizer
     model = AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=torch.bfloat16, low_cpu_mem_usage=True,use_auth_token=token)
