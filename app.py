@@ -2,16 +2,18 @@ import torch
 from transformers import pipeline, AutoModelForCausalLM, AutoTokenizer
 import streamlit as st
 from langchain.prompts import PromptTemplate
+import os
 
 ## Function To get response from LLAma 3.2 model
 
 def getLLamaresponse(input_text, no_words, blog_style):
     ### LLama3.2 model
     model_id = "meta-llama/Llama-3.2-3B"
+    st.write("use_auth_token",st.secrets["DB_TOKEN"])
 
     # Load the model and tokenizer
-    model = AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=torch.bfloat16, low_cpu_mem_usage=True)
-    tokenizer = AutoTokenizer.from_pretrained(model_id)
+    model = AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=torch.bfloat16, low_cpu_mem_usage=True,use_auth_token=["DB_TOKEN"])
+    tokenizer = AutoTokenizer.from_pretrained(model_id,use_auth_token=st.secrets["DB_TOKEN"])
 
     llm = pipeline(
         "text-generation", 
