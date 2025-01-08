@@ -3,10 +3,10 @@ from transformers import pipeline, AutoModelForCausalLM, AutoTokenizer
 import streamlit as st
 from langchain.prompts import PromptTemplate
 
-## Function To get response from LLAma 2 model
+## Function To get response from LLAma 3.2 model
 
 def getLLamaresponse(input_text, no_words, blog_style):
-    ### LLama2 model
+    ### LLama3.2 model
     model_id = "meta-llama/Llama-3.2-3B"
 
     # Load the model and tokenizer
@@ -30,7 +30,7 @@ def getLLamaresponse(input_text, no_words, blog_style):
     
     formatted_prompt = prompt.format(blog_style=blog_style, input_text=input_text, no_words=no_words)
     
-    ## Generate the response from the LLama 2 model
+    ## Generate the response from the LLama 3.2 model
     response = llm(formatted_prompt, max_length=int(no_words) + len(formatted_prompt.split()), pad_token_id=tokenizer.eos_token_id, truncation=True)
     print(response)
     return response
