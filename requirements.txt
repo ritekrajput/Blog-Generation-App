@@ -6,3 +6,4 @@ langchain_community
 python-box
 streamlit
 transformers
+accelerate>=0.26.0
