@@ -34,4 +34,4 @@ This is a **Blog Generation Application** built using the LLaMA 3.2 model and St
     - Collects user input for topic, word count, and style.
     - Displays the generated blog directly in the app.
 
-
+![Streamlit Interface Example](Screenshot.png)
